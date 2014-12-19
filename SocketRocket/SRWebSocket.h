@@ -101,6 +101,7 @@ extern NSString *const SRHTTPResponseErrorKey;
 @optional
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket;
+- (void)webSocketHasSpaceAvailable:(SRWebSocket *)webSocket;
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload;

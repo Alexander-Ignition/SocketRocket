@@ -1488,6 +1488,17 @@ static const size_t SRFrameHeaderOverhead = 32;
                 
             case NSStreamEventHasSpaceAvailable: {
                 SRFastLog(@"NSStreamEventHasSpaceAvailable %@", aStream);
+                
+                // ––––––––––––––––––––––––––––––
+                if (self.readyState == SR_OPEN) {
+                    [self _performDelegateBlock:^{
+                        if ([self.delegate respondsToSelector:@selector(webSocketHasSpaceAvailable:)]) {
+                            [self.delegate webSocketHasSpaceAvailable:self];
+                        }
+                    }];
+                }
+                // ––––––––––––––––––––––––––––––
+                
                 [self _pumpWriting];
                 break;
             }
